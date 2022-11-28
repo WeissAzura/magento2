@@ -1,0 +1,18 @@
+{
+  "muffin_testimonial_data": {
+    "column": {
+      "id": true,
+      "name": true,
+      "content": true,
+      "gender": true,
+      "created_at": true,
+      "updated_at": true
+    },
+    "index": {
+      "MUFFIN_TESTIMONIAL_DATA_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}

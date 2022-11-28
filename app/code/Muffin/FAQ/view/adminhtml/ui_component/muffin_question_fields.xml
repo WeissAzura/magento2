@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">muffin_question_fields.muffin_question_fields_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Question Details</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="array">
+                <item name="name" xsi:type="string">Back</item>
+                <item name="label" xsi:type="string" translate="true">Back</item>
+                <item name="class" xsi:type="string">back</item>
+                <item name="url" xsi:type="string">*/*/index</item>
+            </item>
+            <item name="delete" xsi:type="string">Muffin\FAQ\Block\Button\DeleteQuestion</item>
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">Save</item>
+                <item name="label" xsi:type="string" translate="true">Save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/save</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <namespace>muffin_question_fields</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>muffin_question_fields.muffin_question_fields_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="muffin_question_fields_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="faq/question/savequestion"/>
+        </settings>
+        <dataProvider class="Muffin\FAQ\Ui\Component\Form\QuestionProvider" name="muffin_question_fields_data_source">
+            <settings>
+                <requestFieldName>question_id</requestFieldName>
+                <primaryFieldName>question_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="question_details">
+        <settings>
+            <label translate="true">Question Details</label>
+        </settings>
+        <field name="status" sortOrder="15">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Muffin\FAQ\Ui\Component\Listing\PenAns</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">question</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                </item>
+            </argument>
+        </field>
+        <field name="question" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">question</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Question</label>
+                <dataScope>question</dataScope>
+            </settings>
+        </field>
+        <field name="url_key" sortOrder="25" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">question</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">URL Key</label>
+                <dataScope>url_key</dataScope>
+            </settings>
+        </field>
+        <field name="answer" sortOrder="30" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>answer</dataScope>
+                <label>Full Answer</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="category_id" sortOrder="35">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Muffin\FAQ\Ui\Component\Listing\CategoryListing</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Category</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">question</item>
+                    <item name="dataScope" xsi:type="string">category_id</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

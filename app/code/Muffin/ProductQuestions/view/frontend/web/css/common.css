@@ -1,0 +1,79 @@
+.button-container {
+    margin: 10px 0;
+}
+.button-info {
+    display: inline-block;
+    float: left;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 10px 0;
+    vertical-align: middle;
+}
+.form-toggle-button {
+    background: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    padding: 7px 15px;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin: 10px;
+    box-shadow: none;
+    border-radius: 3px;
+}
+.ask-form-container {
+    display: none;
+}
+.accordion {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 18px 0 18px 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: large;
+    font-weight: 600;
+}
+.accordion:after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: inherit;
+    line-height: inherit;
+    color: #c9c9c9;
+    content: attr(data-arrow);
+    font-family: 'luma-icons', sans-serif;
+    margin-right: 5px;
+    float: right;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+}
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    font-weight: normal;
+}
+.qa-item {
+    border-bottom: 1px solid #c9c9c9;
+    margin: 0 0 2rem 0;
+}
+.Yes {
+    margin-left: 7px;
+}
+.No {
+    margin-left: 7px;
+}
+.helpful {
+    float: right;
+}

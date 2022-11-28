@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <muffin_pq>
+            <general>
+                <enabled>1</enabled>
+                <submode>0</submode>
+            </general>
+        </muffin_pq>
+    </default>
+</config>

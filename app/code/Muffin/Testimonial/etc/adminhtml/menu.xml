@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Muffin_Testimonial::Menu" title="Module Testimonial" module="Muffin_Testimonial" sortOrder="110" resource="Muffin_Testimonial::Menu" parent="Magento_Backend::content"/>
+        <add id="Muffin_Testimonial::listing" sortOrder="10" title="Testimonial Module" module="Muffin_Testimonial"
+             parent="Muffin_Testimonial::Menu" resource="Muffin_Testimonial::listing" translate="title"
+             action="testimonial/index/index"/>
+    </menu>
+</config>

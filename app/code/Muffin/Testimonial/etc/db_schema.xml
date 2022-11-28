@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="muffin_testimonial_data" resource="default" engine="innodb" comment="Testimonial">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="text" name="name" nullable="false"/>
+        <column xsi:type="text" name="content" nullable="false"/>
+        <column xsi:type="smallint" name="gender" unsigned="true" nullable="false" identity="false" default="0"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" on_update="true"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" on_update="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="MUFFIN_TESTIMONIAL_DATA_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

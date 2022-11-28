@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="muffin_megamenu_menu" resource="default" engine="innodb" comment="">
+        <column xsi:type="smallint" name="menu_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="smallint" name="category_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" identity="false" default="1"/>
+        <column xsi:type="text" name="column_amount" nullable="false"/>
+        <column xsi:type="smallint" name="menu_type" unsigned="true" nullable="true" identity="false"/>
+        <column xsi:type="text" name="menu_name" nullable="false"/>
+        <column xsi:type="text" name="menu_url" nullable="false"/>
+        <column xsi:type="text" name="block_left" nullable="true"/>
+        <column xsi:type="text" name="block_right" nullable="true"/>
+        <column xsi:type="text" name="block_top" nullable="true"/>
+        <column xsi:type="text" name="block_bottom" nullable="true"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" on_update="true"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="true" on_update="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="menu_id"/>
+        </constraint>
+        <index referenceId="MUFFIN_MEGAMENU_MENU_MENU_ID" indexType="btree">
+            <column name="menu_id"/>
+        </index>
+    </table>
+    <table name="muffin_megamenu_item" resource="default" engine="innodb" comment="">
+        <column xsi:type="smallint" name="item_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="smallint" name="status" unsigned="true" nullable="false" identity="false" default="1"/>
+        <column xsi:type="text" name="column_pos" nullable="false"/>
+        <column xsi:type="text" name="pos_in_column" nullable="false"/>
+        <column xsi:type="smallint" name="item_type" unsigned="true" nullable="true" identity="false" default="1"/>
+        <column xsi:type="text" name="item_name" nullable="false"/>
+        <column xsi:type="text" name="item_url" nullable="false"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" on_update="true"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="true" on_update="true"/>
+        <column xsi:type="smallint" name="menu_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="smallint" name="category_id" unsigned="true" nullable="false" identity="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="item_id"/>
+        </constraint>
+        <index referenceId="MUFFIN_MEGAMENU_ITEMS_ITEM_ID" indexType="btree">
+            <column name="item_id"/>
+        </index>
+    </table>
+</schema>

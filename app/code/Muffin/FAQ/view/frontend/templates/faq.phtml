@@ -1,0 +1,18 @@
+<?php
+$category = $this->getCategoryCollection();
+foreach ($category as $item) {
+    $text = '<div class="category ' . $item->getData('category_id') . '">';
+    $text .= '<div class="category-title">' . $item->getData('category') . '</div>';
+    $this->setData('category_id', $item->getData('category_id'));
+    $questions = $this->getAnsweredQuestion();
+    foreach ($questions as $question) {
+        $text .= '<div class="accordion">' . $question->getData('question') . '</div>';
+        $text .= '<div class="panel-faq" style="display: none">';
+        $text .= $question->getData('answer');
+        $text .= '<a href="' . $question->getData('url_key') . '" class="read-more-faq">Read more</a>';
+        $text .= '</div>';
+    }
+    $text .= '</div>';
+    echo $text;
+    $text = ""; /** Looks fugly but for debugging purpose */
+}

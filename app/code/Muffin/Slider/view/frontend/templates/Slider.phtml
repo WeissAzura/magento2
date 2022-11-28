@@ -1,0 +1,33 @@
+<?php
+$banners = $block->getBannerCollection();
+$option = $block->getSliderOptions();
+?>
+<?php
+echo '<div class="' . $block->getSliderId() . '">'
+?>
+<?php
+echo '<div class="swiper S' . $block->getSliderId() . '">'
+?>
+    <div class="swiper-wrapper">
+        <?php
+        foreach ($banners as $banner) {
+            echo '<img class="swiper-slide" src="' . $banner->getData('image') . '">';
+        }
+        ?>
+    </div>
+    <div class="swiper-pagination"></div>
+<?php echo '</div>' ?>
+<?php echo '</div>' ?>
+<script>
+    require(['jquery','swiper'],function($, Swiper) {
+        $(document).ready(function() {
+            let <?php echo 'swiper' . $block->getSliderId()?> = new Swiper('.<?php echo 'S' . $block->getSliderId() ?>', {
+                direction: 'horizontal',
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                <?php echo $option?>
+            });
+        });
+    });
+</script>

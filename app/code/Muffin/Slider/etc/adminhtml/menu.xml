@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Muffin_Slider::bannerslider" title="Banner Sliders" module="Muffin_Slider" sortOrder="100" resource="Muffin_Slider::bannerslider" parent="Magento_Backend::content"/>
+        <add id="Muffin_Slider::banner" title="Manage Banners" module="Muffin_Slider" sortOrder="20" parent="Muffin_Slider::bannerslider" action="muffinslider/banner/index" resource="Muffin_Slider::banner"/>
+        <add id="Muffin_Slider::slider" title="Manage Sliders" module="Muffin_Slider" sortOrder="30" parent="Muffin_Slider::bannerslider" action="muffinslider/slider/index" resource="Muffin_Slider::slider"/>
+    </menu>
+</config>

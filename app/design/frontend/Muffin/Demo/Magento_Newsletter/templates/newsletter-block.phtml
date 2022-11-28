@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+?>
+<div class="newsletter-popup" style="display: block;">
+    <div class="popup-overlay">&nbsp;</div>
+    <div class="popup-content">
+        <div class="content-left" style="background-image: url('https://www.curatiq.com/pub/media/popup.png')"></div>
+        <div class="content-right">
+            <div class="close">&nbsp;</div>
+            <div class="webforms">
+                <div class="webforms-description-text">
+                    <h2>Enjoy 15% off <br>of your first purchase</h2>
+                    <p>Sign up for our newsletter and be in the loop for our new arrivals, sale, special events, and latest collections!</p>
+                </div>
+                <form class="form subscribe form webforms-newsletter-popup"
+                      novalidate
+                      action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+                      method="post"
+                      data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                      id="newsletter-validate-detail">
+                    <fieldset class="fieldset">
+                        <div class="field wf-lg-1-1 wf-md-1-1 wf-sm-1-1 type-text webforms-fields-11 webforms-fields-name">
+                            <div class="newsletter-control">
+                                <input name="firstname" type="text"
+                                       placeholder="<?= $block->escapeHtml(__('Name')) ?>"
+                                       data-mage-init='{"mage/trim-input":{}}'
+                                       data-validate="{required:true}"/>
+                            </div>
+                        </div>
+                        <div class="field wf-lg-1-1 wf-md-1-1 wf-sm-1-1 type-email webforms-fields-12 webforms-fields-email">
+                            <div class="-newsletter-control">
+                                <input name="email" type="email"
+                                       placeholder="<?= $block->escapeHtml(__('Email Address')) ?>"
+                                       data-mage-init='{"mage/trim-input":{}}'
+                                       data-validate="{required:true, 'validate-email':true}"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button class="cr_button custom-btn action submit primary"
+                                    title="<?= $block->escapeHtmlAttr(__('SIGN ME UP!')) ?>"
+                                    type="submit"
+                                    aria-label="Subscribe">
+                                <span><?= $block->escapeHtml(__('SIGN ME UP!')) ?></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Customer/js/block-submit-on-send": {
+                "formId": "newsletter-validate-detail"
+            }
+        }
+    }
+</script>

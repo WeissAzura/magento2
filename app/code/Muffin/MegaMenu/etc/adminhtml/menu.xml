@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Muffin_MegaMenu::Menu" title="Mega Menu" module="Muffin_MegaMenu" sortOrder="100" resource="Muffin_MegaMenu::Menu" parent="Magento_Backend::content"/>
+        <add id="Muffin_MegaMenu::item" sortOrder="20" title="Manage Submenu" module="Muffin_MegaMenu"
+             parent="Muffin_MegaMenu::Menu" resource="Muffin_MegaMenu::item" translate="title" action="megamenu/item/index"/>
+        <add id="Muffin_MegaMenu::design" sortOrder="30" title="Manage Menu" module="Muffin_MegaMenu"
+             parent="Muffin_MegaMenu::Menu" resource="Muffin_MegaMenu::design" translate="title" action="megamenu/menu/index"/>
+        <add id="Muffin_MegaMenu::module" sortOrder="40" title="Manage Module" module="Muffin_MegaMenu"
+             parent="Muffin_MegaMenu::Menu" resource="Muffin_MegaMenu::module" translate="title" action="admin/system_config/edit/section/muffin_megamenu"/>
+    </menu>
+</config>

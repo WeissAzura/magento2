@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Muffin_ProductQuestions::css/common.css"/>
+    </head>
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Muffin\ProductQuestions\Block\QuestionTab" name="product_question" template="Muffin_ProductQuestions::custom_tab.phtml" group="detailed_info" cacheable="false">
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Product Question</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

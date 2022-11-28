@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="top.links" remove="true"/>
+        <move element="navigation.sections" destination="header.container" after="-"/>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" template="top-bar.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+            <container name="header-middle" htmlClass="header-middle" after="header.panel.wrapper" htmlTag="div">
+                <container name="header-middle-content" htmlClass="header-middle-content" htmlTag="div" before="-">
+                    <container name="header-logo" htmlClass="header-logo" htmlTag="div" before="-">
+                        <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                            <arguments>
+                                <argument name="logoPathResolver" xsi:type="object">Magento\Theme\ViewModel\Block\Html\Header\LogoPathResolver</argument>
+                                <argument name="logo_size_resolver" xsi:type="object">Magento\Theme\ViewModel\Block\Html\Header\LogoSizeResolver</argument>
+                                <argument name="logo_file" xsi:type="string">images/logo_page.png</argument>
+                                <argument name="logo_width" xsi:type="number">360</argument>
+                                <argument name="logo_height" xsi:type="number">50</argument>
+                                <argument name="logo_alt" xsi:type="string">Logo curatiq</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <container name="header-right" htmlTag="div" htmlClass="header-right" after="header-logo">
+                        <container name="customer-welcome" htmlTag="div" htmlClass="customer-welcome">
+                            <block class="Magento\Framework\View\Element\Template" template="customer-icon.phtml"/>
+                            <container name="customer-menu" htmlClass="customer-menu" htmlTag="div">
+                                <container name="header_links_menu" htmlTag="ul" htmlClass="header_links_menu"/>
+                            </container>
+                        </container>
+                        <container name="wishlist-header" htmlClass="wishlist-header" htmlTag="ul" after="customer-welcome">
+                            <block class="Magento\Wishlist\Block\Link" name="wish-list-link" after="my-account-link">
+                            </block>
+                        </container>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+        <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Register</argument>
+            </arguments>
+        </block>
+        <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link"
+               template="Magento_Customer::account/link/authorization.phtml"/>
+        <move element="authorization-link" destination="header_links_menu" before="-" as="authorization-link"/>
+        <move element="register-link" destination="header_links_menu" after="-" as="register-link"/>
+        <move element="minicart" destination="header-right" as="minicart" after="-"/>
+        <move element="top.search" destination="header-right" before="-"/>
+        <referenceBlock name="advanced-search-link" remove="true"/>
+        <referenceContainer name="header-wrapper" remove="true"/>
+        <referenceBlock name="store.settings.currency" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template" template="footer-guaranteed.phtml" name="footer-guaranteed-block"/>
+            <container name="footer_site" htmlClass="footer_site" htmlTag="div" after="footer-guaranteed-block">
+                <container name="container-footer-elements" htmlTag="div" htmlClass="container">
+                    <container name="container_footer_main" htmlClass="container_footer_main" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Template" template="footer-links-block.phtml" name="footer-links-block" before="-"/>
+                        <block class="Magento\Newsletter\Block\Subscribe" name="footer-static.newsletter" template="subscribe_2.phtml"/>
+                    </container>
+                </container>
+            </container>
+            <block class="Magento\Framework\View\Element\Template" template="copyright-block.phtml" name="copyright-block" after="footer_site"/>
+        </referenceContainer>
+        <referenceBlock name="accordion.sidebar" remove="true"/>
+    </body>
+</page>

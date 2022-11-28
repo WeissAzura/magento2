@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Muffin_PQ::ProductQuestion" title="Module Product Question" module="Muffin_ProductQuestions" sortOrder="110" resource="Muffin_PQ::ProductQuestion" parent="Magento_Backend::content"/>
+        <add id="Muffin_PQ::module" sortOrder="30" title="Manage Module" module="Muffin_ProductQuestions"
+             parent="Muffin_PQ::ProductQuestion" resource="Muffin_PQ::module" translate="title" action="admin/system_config/edit/section/muffin_pq"/>
+        <add id="Muffin_PQ::question" sortOrder="20" title="Manage Question" module="Muffin_ProductQuestions"
+             parent="Muffin_PQ::ProductQuestion" resource="Muffin_PQ::question" translate="title"
+             action="proque/question/index"/>
+    </menu>
+</config>

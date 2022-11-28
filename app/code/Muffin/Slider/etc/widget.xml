@@ -1,0 +1,11 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Muffin\Slider\Block\Widget" id="Muffin_Slider_Widget">
+        <label>Muffin Slider</label>
+        <description>Slider list</description>
+        <parameters>
+            <parameter name="Slider_ID" xsi:type="select" required="true" visible="true" source_model="Muffin\Slider\Model\Config\Source\ListSliderWidget">
+                <label>Select Slider</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

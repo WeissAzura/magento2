@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Muffin\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">
+                Muffin\Testimonial\Model\ResourceModel\Testimonial
+            </argument>
+            <argument name="mainTable" xsi:type="string">muffin_testimonial_data</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument xsi:type="array" name="collections">
+                <item xsi:type="string" name="muffin_testimonial_listing_data_source">Muffin\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Mageplaza\Blog\Block\Category\Widget" type="Muffin\Testimonial\Block\Category\Widget"/>
+</config>

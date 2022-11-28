@@ -1,0 +1,58 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Currency switcher
+ *
+ * @var \Magento\Directory\Block\Currency $block
+ */
+
+?>
+<?php if ($block->getCurrencyCount() > 1) : ?>
+    <?php $currencies = $block->getCurrencies(); ?>
+    <?php $currentCurrencyCode = $block->getCurrentCurrencyCode(); ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <div class="switcher currency switcher-currency" id="switcher-currency<?= $block->escapeHtmlAttr($id) ?>">
+        <strong class="label switcher-label" style="display:none;"><span><?= $block->escapeHtml(__('Currency')) ?></span></strong>
+        <div class="switcher-options">
+            <div class="switcher-trigger"
+                 id="switcher-currency-trigger<?= $block->escapeHtmlAttr($id) ?>"
+                <strong class="language-<?= $block->escapeHtml($block->getCurrentCurrencyCode()) ?>">
+                    <span><?= $block->escapeHtml($currentCurrencyCode) ?></span>
+                    <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                </strong>
+            </div>
+            <div class="switcher-dropdown">
+                <?php foreach ($currencies as $_code => $_name) : ?>
+                    <?php if ($_code != $currentCurrencyCode) : ?>
+                            <a href="#" data-post='<?= /* @noEscape */ $block->getSwitchCurrencyPostData($_code) ?>'><?= $block->escapeHtml($_code) ?></a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script>
+    require(['jquery'],function($) {
+        $(document).ready(function(){
+            $("#switcher-currency-trigger").click(function (e) {
+                e.stopPropagation();
+                $(".switcher-dropdown").toggle();
+                $(".label[data-role=minisearch-label]").next().hide();
+                $("button[title=Search]").hide();
+                $(".header_links_menu").hide();
+            });
+            $(document).on("click", function(event) {
+                let trigger = $("#switcher-currency-trigger")[0];
+                let dropdown = $(".switcher-dropdown");
+                if (dropdown !== event.target && !dropdown.has(event.target).length && trigger !== event.target) {
+                    $(".switcher-dropdown").hide();
+                }
+            });
+        });
+    });
+
+</script>

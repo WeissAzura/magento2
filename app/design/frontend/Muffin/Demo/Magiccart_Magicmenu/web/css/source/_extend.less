@@ -1,0 +1,25 @@
+& when (@media-common = true) {
+    .magicmenu .nav-desktop .level0.hasChild .level-top:after {
+        content: none;
+    }
+    .magicmenu .nav-desktop .level0 .level-top-mega .children > a span {
+        font-weight: lighter;
+    }
+    .magicmenu .nav-desktop .level0 .level-top-mega .children > a:hover span:hover {
+        font-weight: 700;
+    }
+    .magicmenu .nav-desktop .level0 .level-top-mega .children a span:hover {
+        font-weight: 700;
+    }
+
+    .magicmenu .nav-desktop .level0 .level-top-mega {
+        box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16) inset;
+    }
+    a.level-top:hover {
+        span {
+            color: #9d8c89;
+            padding-bottom : 8px;
+            border-bottom : solid 5px #9d8c89;
+        }
+    }
+}

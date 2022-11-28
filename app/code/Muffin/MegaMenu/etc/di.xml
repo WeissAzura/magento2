@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="ItemCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Muffin\MegaMenu\Model\ResourceModel\Item
+            </argument>
+            <argument name="mainTable" xsi:type="string">muffin_megamenu_item</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument xsi:type="array" name="collections">
+                <item xsi:type="string" name="muffin_megamenu_items_data_source">ItemCollection</item>
+                <item xsi:type="string" name="muffin_megamenu_design_data_source">MenuCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="MenuCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Muffin\MegaMenu\Model\ResourceModel\Menu
+            </argument>
+            <argument name="mainTable" xsi:type="string">muffin_megamenu_menu</argument>
+        </arguments>
+    </virtualType>
+</config>

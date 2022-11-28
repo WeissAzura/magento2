@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <muffin_helpdesk>
+            <email_template>
+                <customer>muffin_helpdesk_email_template_customer</customer>
+                <store_owner>muffin_helpdesk_email_template_store_owner</store_owner>
+            </email_template>
+        </muffin_helpdesk>
+    </default>
+</config>

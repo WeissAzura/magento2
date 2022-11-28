@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Muffin_FAQ::css/Info_Page.css" media="all"/>
+        <script src="Muffin_FAQ::js/infoJS.js"/>
+        <script src="Muffin_FAQ::js/common.js" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block name="muffin_faq_info" class="Muffin\FAQ\Block\Index" template="Muffin_FAQ::info.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

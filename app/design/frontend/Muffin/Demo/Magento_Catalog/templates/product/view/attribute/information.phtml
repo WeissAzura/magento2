@@ -1,0 +1,42 @@
+<?php
+$product = $this->getProduct();
+if ($product->getData('description')) : ?>
+    <div class="product-attr">
+        <div class="title-attr">Description</div>
+    </div>
+    <div class="content-attr">
+        <?php echo $product->getData('description'); ?>
+    </div>
+<?php endif; ?>
+<?php
+if ($product->getData('ingredients')) : ?>
+    <div class="product-attr">
+        <div class="title-attr">Ingredients</div>
+    </div>
+    <div class="content-attr">
+        <?php echo $product->getData('ingredients'); ?>
+    </div>
+<?php endif; ?>
+<?php
+if ($product->getData('important_info')) : ?>
+    <div class="product-attr">
+        <div class="title-attr">Important Info</div>
+    </div>
+    <div class="content-attr">
+        <?php echo $product->getData('important_info'); ?>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+    require(['jquery'],function($) {
+        $(document).ready(function(){
+            $(".product-attr").click(function (e){
+                if ($(this).children().hasClass("active")) {
+                    $(this).children().removeClass("active");
+                } else {
+                    $(this).children().addClass("active");
+                }
+                $(this).next().slideToggle();
+            });
+        });
+    });
+</script>

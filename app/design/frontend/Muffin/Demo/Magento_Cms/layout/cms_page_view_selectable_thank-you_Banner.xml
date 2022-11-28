@@ -1,0 +1,7 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" label="1-column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main" htmlClass="column main">
+            <block name="thank-you" class="Magento\Framework\View\Element\Template" template="thank-you.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

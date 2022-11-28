@@ -1,0 +1,39 @@
+{
+    "muffin_faq_category": {
+        "column": {
+            "category_id": true,
+            "category": true,
+            "url_key": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "MUFFIN_FAQ_CATEGORY_CATEGORY_ID": true,
+            "MUFFIN_FAQ_CATEGORY_CATEGORY_URL_KEY": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "muffin_faq_question": {
+        "column": {
+            "question_id": true,
+            "question": true,
+            "url_key": true,
+            "answer": true,
+            "status": true,
+            "category_id": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "MUFFIN_FAQ_QUESTION_QUESTION_ID": true,
+            "MUFFIN_FAQ_QUESTION_QUESTION_URL_KEY_ANSWER": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MUFFIN_FAQ_QUESTION_CATEGORY_ID_MUFFIN_FAQ_CATEGORY_CATEGORY_ID": true
+        }
+    }
+}

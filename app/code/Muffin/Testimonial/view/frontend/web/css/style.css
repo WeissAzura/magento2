@@ -1,0 +1,117 @@
+.testimonial-slider {
+    width: 95%;
+    height: auto;
+}
+.home-testimonials {
+    position: relative;
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+    background-color: #f9f9fb;
+    padding-bottom: 115px;
+}
+.home-testimonials .container {
+    padding: 103px 20px 0;
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 1188px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-testimonials .container:after {
+    content: " ";
+    display: table;
+}
+.home-testimonials .container:before {
+    content: " ";
+    display: table;
+}
+.home-testimonials .content-left {
+    width: 41%;
+    margin-top: 8px;
+    line-height: 0;
+    margin-bottom: 215px;
+    z-index: 2;
+    position: relative;
+    float: left;
+}
+.home-testimonials .content-left:before {
+    content: "";
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    top: 0;
+    position: absolute;
+    background-color: #fff;
+    z-index: -1;
+}
+.home-testimonials .content-left p.heading {
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+.home-testimonials .content-left p.heading:before {
+    content: none;
+}
+.home-testimonials .content-right {
+    width: 50%;
+    margin-left: 85px;
+    float: left;
+}
+.home-testimonials .content-right h3 {
+    width: 55%;
+}
+.home-testimonials .widget-testimonials {
+    position: absolute;
+    width: 47%;
+    bottom: 0;
+    right: 2%;
+    z-index: 0;
+    margin: 0;
+    padding: 60px 60px 60px 158px;
+}
+.home-testimonials .testimonial-item {
+    text-align: center;
+}
+.home-testimonials .testimonial-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 23px;
+    position: relative;
+    right: -1px;
+}
+.home-testimonials .testimonial-des {
+    width: 80%;
+    margin: 0 auto 20px;
+    position: relative;
+    top: 3px;
+}
+.home-testimonials .testimonial-author {
+    font: normal normal 300 17px/24px Jost;
+    position: relative;
+    left: 6px;
+}
+.home-testimonials .testimonial-des p {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-weight: 300;
+}
+.home-testimonials .swiper-button-next {
+    top: 15%;
+    right: 178px;
+}
+.home-testimonials .swiper-button-prev {
+    top: 15%;
+    left: 179px;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: #474747;
+    font-size: 16px;
+    -webkit-text-stroke: 2px #474747;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contact Us</title>
+    </head>
+    <body>
+        <container name="rev-banner-wrapper" htmlTag="div" htmlClass="rev-banner-wrapper">
+            <container name="banner-content" htmlClass="banner-content" htmlTag="div"/>
+            <block class="Magento\Framework\View\Element\Template" name="blog-banner" after="-" template="blog-banner.phtml"/>
+        </container>
+        <move element="rev-banner-wrapper" destination="page.wrapper" before="main.content"/>
+        <move element="breadcrumbs" destination="banner-content"/>
+        <move element="page.main.title" destination="banner-content" before="-"/>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string" translate="true">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Home</item>
+                    <item name="label" xsi:type="string" translate="true">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string" translate="true">Contact Us</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Contact Us</item>
+                    <item name="label" xsi:type="string" translate="true">Contact Us</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <container name="contact-form-block" htmlClass="contact-form-block" htmlTag="div">
+                <block name="block-left-contact" class="Magento\Framework\View\Element\Template" template="block-left-contact.phtml" before="-"/>
+                <container name="container-contact" htmlTag="div" htmlClass="container-contact-block" after="block-left-contact">
+                    <block class="Magento\Contact\Block\ContactForm" name="contactForm" template="Magento_Contact::form.phtml">
+                        <container name="form.additional.info" label="Form Additional Info"/>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

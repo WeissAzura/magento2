@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundHelper
+
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php if ($url = $block->getCurrentCategory()->getData('youtube_video_id')):?>
+    <div class="video-brandstory">
+        <iframe title="YouTube video player" src="https://www.youtube.com/embed/<?php echo $url;?>" width="904px" height="467px" frameborder="0"></iframe>
+    </div>
+<?php endif; ?>

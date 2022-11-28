@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/cms_index.css" rel="stylesheet" type="text/css"/>
+        <script src="js/cms_index.js"/>
+    </head>
+    <body>
+        <referenceContainer name="main" htmlClass="column main">
+            <container name="slider-banner" label="Slider Banner" htmlClass="slider-banner" htmlTag="div" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" template="block-products.phtml" after="slider-banner" name="block-product"/>
+            <container name="home-product" label="Home Product" htmlClass="home-product" htmlTag="div" after="block-product">
+                <block class="Magento\Framework\View\Element\Template" template="block-products-list.phtml" after="slider-banner" name="block-product-list"/>
+            </container>
+            <block class="Magento\Framework\View\Element\Template" template="another-home-block.phtml" after="home-product" name="another-home-block"/>
+            <block class="Muffin\Testimonial\Block\Testimonial" template="testimony.phtml" after="another-home-block" name="testimony-block"/>
+            <container htmlClass="home-newsletter" label="Home Newsletter" htmlTag="div" after="-">
+                <container htmlTag="div" htmlClass="container" name="newsletter-container">
+                    <block class="Magento\Framework\View\Element\Template" template="home-newsletter-block.phtml" name="home-newsletter-block" before="-"/>
+                    <block class="Magento\Newsletter\Block\Subscribe" name="static.newsletter" template="subscribe_1.phtml"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Newsletter\Block\Subscribe" name="footer-popup.newsletter" template="newsletter-block.phtml" after="-"/>
+        </referenceContainer>
+    </body>
+</page>

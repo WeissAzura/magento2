@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Muffin_FAQ::FAQ" title="FAQ" module="Muffin_FAQ" sortOrder="100" resource="Muffin_FAQ::FAQ" parent="Magento_Backend::content"/>
+        <add id="Muffin_FAQ::category" sortOrder="20" title="Manage Category" module="Muffin_FAQ"
+             parent="Muffin_FAQ::FAQ" resource="Muffin_FAQ::category" translate="title" action="faq/category/index"/>
+        <add id="Muffin_FAQ::question" sortOrder="30" title="Manage Question" module="Muffin_FAQ"
+             parent="Muffin_FAQ::FAQ" resource="Muffin_FAQ::question" translate="title" action="faq/question/index"/>
+        <add id="Muffin_FAQ::module" sortOrder="40" title="Manage Module" module="Muffin_FAQ"
+             parent="Muffin_FAQ::FAQ" resource="Muffin_FAQ::module" translate="title" action="admin/system_config/edit/section/muffin_faq"/>
+    </menu>
+</config>

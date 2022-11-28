@@ -1,0 +1,66 @@
+<?php
+/** @var Testimonial $this */
+
+use Muffin\Testimonial\Block\Testimonial;
+
+$collection = $this->getTestimonyCollection();
+?>
+<div class="home-testimonials" style="background-image: url('https://www.curatiq.com/pub/media/home-testimonials-bgr.png')">
+    <div class="container">
+        <div class="content-left desktop">
+            <p class="heading"><img src="https://www.curatiq.com/pub/media/shutterstock_1985631446.jpg" alt="" width="490" height="440"></p>
+        </div>
+        <div class="content-right">
+            <p class="heading">Testimonials</p>
+            <h3>What Customers are&nbsp;Saying</h3>
+            <div class="professional-testimonial-info">
+                <div class="professional-testimonial-rate">&nbsp;</div>
+            </div>
+        </div>
+        <div class="widget-testimonials" style="background-image: url('https://www.curatiq.com/pub/media/home_testimonial.png')">
+            <div class="widget block block-static-block">
+                <section class="testimonial-block">
+                    <div class="testimonial-container">
+                        <div class="swiper testimonial-slider">
+                            <div class="swiper-button-prev" style="display: flex;"></div>
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($collection as $item) {
+    echo "<div class='swiper-slide testimonial-item'>";
+    echo "<div class='testimonial-image'>";
+    if ($item->getData('gender') == 1) {
+        echo "<img src='https://www.curatiq.com/pub/media/testimonial/Male_PNG.png' width='81' height='81'>";
+    } else {
+        echo "<img src='https://www.curatiq.com/pub/media/testimonial/Female_PNG.png' width='81' height='81'>";
+    }
+    echo "</div>";
+    echo "<div class='testimonial-info'>";
+    echo "<div class='testimonial-des'>";
+    echo $item->getData('content');
+    echo "</div>";
+    echo "<div class='testimonial-author'>- " . $item->getData('name') . "</div>";
+    echo "</div>";
+    echo "</div>";
+}?>
+                                </div>
+                            <div class="swiper-button-next" style="display: flex;"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(['jquery','swiper'],function($, Swiper) {
+        $(document).ready(function() {
+            let swiper = new Swiper('.swiper' , {
+                direction: 'horizontal',
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+    });
+</script>

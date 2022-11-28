@@ -1,0 +1,675 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">muffin_menu_fields.muffin_menu_fields_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Menu</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="array">
+                <item name="name" xsi:type="string">Back</item>
+                <item name="label" xsi:type="string" translate="true">Back</item>
+                <item name="class" xsi:type="string">back</item>
+                <item name="url" xsi:type="string">*/*/index</item>
+            </item>
+            <item name="delete" xsi:type="string">Muffin\MegaMenu\Block\Button\DeleteMenu</item>
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">Save</item>
+                <item name="label" xsi:type="string" translate="true">Save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/save</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <namespace>muffin_menu_fields</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>muffin_menu_fields.muffin_menu_fields_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="muffin_menu_fields_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="megamenu/menu/save"/>
+        </settings>
+        <dataProvider class="Muffin\MegaMenu\Ui\Component\Form\Menu" name="muffin_menu_fields_data_source">
+            <settings>
+                <requestFieldName>menu_id</requestFieldName>
+                <primaryFieldName>menu_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="menu_details">
+        <settings>
+            <label translate="true">Menu Details</label>
+        </settings>
+        <field name="status" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Enabledisable</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">menu</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                </item>
+            </argument>
+        </field>
+        <field name="menu_type" sortOrder="15">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Muffin\MegaMenu\Model\Config\Source\Type</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">menu</item>
+                    <item name="dataScope" xsi:type="string">menu_type</item>
+                </item>
+            </argument>
+            <settings>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.category_id</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="1">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.menu_name</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="2">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.menu_url</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.category_id</target>
+                                    <callback>hide</callback>
+                                </action>
+                                <action name="1">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.menu_name</target>
+                                    <callback>show</callback>
+                                </action>
+                                <action name="2">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.menu_url</target>
+                                    <callback>show</callback>
+                                </action>
+
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+        </field>
+        <field name="category_id" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Muffin\MegaMenu\Model\Config\Source\CategoryList</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="label" xsi:type="string" translate="true">Parent Category</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">menu</item>
+                    <item name="dataScope" xsi:type="string">category_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="cat_name" sortOrder="25" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">menu</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">New Category Name</label>
+            </settings>
+        </field>
+        <field name="cat_url" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">menu</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">New Category URL</label>
+            </settings>
+        </field>
+        <dynamicRows name="subcategory" sortOrder="35">
+            <settings>
+                <label>Subcategory</label>
+                <addButtonLabel translate="true">Add Subcategory</addButtonLabel>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record">
+
+                <argument name="data" xsi:type="array">
+
+                    <item name="config" xsi:type="array">
+
+                        <item name="label" xsi:type="string" translate="true">Dynamic Rows</item>
+
+                        <item name="component" xsi:type="string" translate="true">Magento_Ui/js/dynamic-rows/record</item>
+
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+
+                        <item name="is_collection" xsi:type="boolean">true</item>
+
+                        <item name="showFallbackReset" xsi:type="boolean">false</item>
+
+                    </item>
+
+                </argument>
+
+                <field name="item_name">
+
+                    <argument name="data" xsi:type="array">
+
+                        <item name="config" xsi:type="array">
+
+                            <item name="dataType" xsi:type="string">text</item>
+
+                            <item name="label" xsi:type="string" translate="true">Name</item>
+
+                            <item name="dataScope" xsi:type="string">item_name</item>
+
+                            <item name="formElement" xsi:type="string">input</item>
+
+                            <item name="showFallbackReset" xsi:type="boolean">false</item>
+
+                            <item name="validation" xsi:type="array">
+
+                                <item name="required-entry" xsi:type="boolean">true</item>
+
+                            </item>
+
+                            <item name="sortOrder" xsi:type="string">10</item>
+
+                        </item>
+
+                    </argument>
+
+                </field>
+
+                <field name="item_url">
+
+                    <argument name="data" xsi:type="array">
+
+                        <item name="config" xsi:type="array">
+
+                            <item name="dataType" xsi:type="string">text</item>
+
+                            <item name="label" xsi:type="string" translate="true">URL Key</item>
+
+                            <item name="dataScope" xsi:type="string">item_url</item>
+
+                            <item name="formElement" xsi:type="string">input</item>
+
+                            <item name="showFallbackReset" xsi:type="boolean">false</item>
+
+                            <item name="validation" xsi:type="array">
+
+                                <item name="required-entry" xsi:type="boolean">true</item>
+
+                            </item>
+
+                            <item name="sortOrder" xsi:type="string">30</item>
+
+                        </item>
+
+                    </argument>
+
+                </field>
+
+                <field name="column_pos" sortOrder="50" formElement="input">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">item</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Pos C</label>
+                        <dataScope>column_pos</dataScope>
+                    </settings>
+                </field>
+
+                <field name="pos_in_column" sortOrder="60" formElement="input">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">item</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Pos in C</label>
+                        <dataScope>pos_in_column</dataScope>
+                    </settings>
+                </field>
+
+                <field name="row_display">
+                    <argument name="data" xsi:type="array">
+
+                        <item name="options" xsi:type="object">Magento\Catalog\Model\Category\Attribute\Source\Mode</item>
+
+                        <item name="config" xsi:type="array">
+
+                            <item name="dataType" xsi:type="string">text</item>
+
+                            <item name="label" xsi:type="string" translate="true">Layout</item>
+
+                            <item name="dataScope" xsi:type="string">row_display</item>
+
+                            <item name="formElement" xsi:type="string">select</item>
+
+                            <item name="showFallbackReset" xsi:type="boolean">false</item>
+
+                            <item name="sortOrder" xsi:type="string">70</item>
+
+                        </item>
+
+                    </argument>
+                </field>
+
+                <field name="row_layout">
+                    <argument name="data" xsi:type="array">
+
+                        <item name="options" xsi:type="object">Magento\Catalog\Model\Config\Source\LayoutList</item>
+
+                        <item name="config" xsi:type="array">
+
+                            <item name="dataType" xsi:type="string">text</item>
+
+                            <item name="label" xsi:type="string" translate="true">Layout</item>
+
+                            <item name="dataScope" xsi:type="string">row_layout</item>
+
+                            <item name="formElement" xsi:type="string">select</item>
+
+                            <item name="showFallbackReset" xsi:type="boolean">false</item>
+
+                            <item name="sortOrder" xsi:type="string">80</item>
+
+                        </item>
+
+                    </argument>
+                </field>
+
+                <field name="item_category_id" sortOrder="90">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">integer</item>
+                            <item name="label" xsi:type="string" translate="true">Category ID</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">item</item>
+                            <item name="dataScope" xsi:type="string">item_category_id</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <visible>false</visible>
+                    </settings>
+                </field>
+
+                <actionDelete>
+
+                    <argument name="data" xsi:type="array">
+
+                        <item name="config" xsi:type="array">
+
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+
+                            <item name="dataType" xsi:type="string">text</item>
+
+                            <item name="fit" xsi:type="boolean">false</item>
+
+                            <item name="label" xsi:type="string">Actions</item>
+
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete</item>
+
+                        </item>
+
+                    </argument>
+
+                </actionDelete>
+
+            </container>
+        </dynamicRows>
+        <field name="menu_name" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">menu</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>menu_name</dataScope>
+            </settings>
+        </field>
+        <field name="menu_url" sortOrder="45" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">menu</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">URL</label>
+                <dataScope>menu_url</dataScope>
+            </settings>
+        </field>
+        <field name="column_amount" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">menu</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Number of column</label>
+                <dataScope>column_amount</dataScope>
+            </settings>
+        </field>
+        <field name="block_left_check" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice" formElement="checkbox" sortOrder="55">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Block Left</label>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_left</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_left</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="block_left" sortOrder="60" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>block_left</dataScope>
+                <label>Block Left Content</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="block_right_check" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice" formElement="checkbox" sortOrder="65">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Block Right</label>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_right</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_right</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="block_right" sortOrder="70" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>block_right</dataScope>
+                <label>Block Right Content</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="block_top_check" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice" formElement="checkbox" sortOrder="75">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Block Top</label>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_top</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_top</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="block_top" sortOrder="80" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>block_top</dataScope>
+                <label>Block Top Content</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="block_bottom_check" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice" formElement="checkbox" sortOrder="85">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Block Bottom</label>
+                <switcherConfig>
+                    <rules>
+                        <rule name="0">
+                            <value>0</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_bottom</target>
+                                    <callback>hide</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                        <rule name="1">
+                            <value>1</value>
+                            <actions>
+                                <action name="0">
+                                    <target>muffin_menu_fields.muffin_menu_fields.menu_details.block_bottom</target>
+                                    <callback>show</callback>
+                                </action>
+                            </actions>
+                        </rule>
+                    </rules>
+                    <enabled>true</enabled>
+                </switcherConfig>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="block_bottom" sortOrder="90" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataScope>block_bottom</dataScope>
+                <label>Block Bottom Content</label>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
+

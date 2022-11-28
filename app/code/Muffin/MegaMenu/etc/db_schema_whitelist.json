@@ -1,0 +1,46 @@
+{
+    "muffin_megamenu_menu": {
+        "column": {
+            "menu_id": true,
+            "status": true,
+            "column_amount": true,
+            "menu_type": true,
+            "menu_name": true,
+            "menu_url": true,
+            "item_ids": true,
+            "block_left": true,
+            "block_right": true,
+            "block_top": true,
+            "block_bottom": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "MUFFIN_MEGAMENU_MENU_MENU_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "muffin_megamenu_item": {
+        "column": {
+            "item_id": true,
+            "status": true,
+            "column_pos": true,
+            "pos_in_column": true,
+            "item_type": true,
+            "item_name": true,
+            "item_url": true,
+            "created_at": true,
+            "updated_at": true,
+            "menu_id": true,
+            "category_id": true
+        },
+        "index": {
+            "MUFFIN_MEGAMENU_ITEM_ITEM_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <muffinslider>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <muffinslider_design>
+                <responsive>0</responsive>
+                <loop>1</loop>
+                <autoplay>1</autoplay>
+                <autoplaySpeed>3000</autoplaySpeed>
+                <pauseOnHover>0</pauseOnHover>
+            </muffinslider_design>
+        </muffinslider>
+    </default>
+</config>

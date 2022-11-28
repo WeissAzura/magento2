@@ -1,0 +1,557 @@
+.page-main {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: unset;
+}
+.mp-banner-slider .owl-dots .owl-dot {
+    height: 30px;
+}
+.owl-dots {
+    display: flex;
+    height: 100% !important;
+    flex-direction: column;
+    width: 26px !important;
+    justify-content: center;
+    align-items: center;
+    left: calc((100vw - 1188px)/4) !important;
+    top: 50% !important;
+    transform: matrix(1, 0, 0, 1, 0, -446);
+}
+.mp-banner-slider .owl-dots .owl-dot.active {
+    height: 26px;
+    border: 1px solid #6c6c6c;
+    background-color: transparent !important;
+    opacity: 1;
+    border-radius: 50%;
+}
+.banner-caption a.button {
+    padding: 0 40px !important;
+    letter-spacing: 1px !important;
+    font-size: 15px !important;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #474747;
+    transition: all .3s !important;
+}
+.banner-caption a.button:hover {
+    color: #fff;
+    background-color: #474747;
+    transition: all .3s !important;
+}
+.home-cate-wrapper {
+    margin: 40px auto 0;
+    padding: 0 20px;
+    max-width: 1740px;
+    display: flex;
+    overflow: hidden;
+    clear: both;
+    flex-direction: row;
+}
+.home-cate.left {
+    background-image: url("https://www.curatiq.com/pub/media/home_oral.jpg");
+    position: relative;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 34%;
+    max-width: 570px;
+    margin-right: 29px;
+}
+.home-cate {
+    position: relative;
+    float: left;
+}
+.home-cate.mid {
+    background-image: url("https://www.curatiq.com/pub/media/Skin_Care-min.jpg");
+    width: 30%;
+    position: relative;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    max-width: 480px;
+    margin: 0 55px 0 30px;
+}
+.home-cate.right {
+    background-image: url("https://www.curatiq.com/pub/media/Make_up-min.jpg");
+    position: relative;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 34%;
+    max-width: 570px;
+}
+.home-cate:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 50%;
+    bottom: 0;
+    background: transparent linear-gradient(0deg,rgba(0,0,0,.501) 0%,rgba(0,0,0,0) 100%) 0 0 no-repeat padding-box;
+}
+.cate-inner {
+    opacity: 0;
+    margin: 15px;
+    padding: 135px 25px 30px;
+    position: relative;
+    transition: all .4s;
+}
+.home-cate h3 {
+    position: relative;
+    z-index: 1;
+}
+
+.home-cate h3 {
+    color: #fff;
+    font: normal normal 300 40px/45px Manrope;
+    letter-spacing: -.8px;
+    margin-bottom: 25px;
+}
+
+.home-cate h3+p {
+    position: relative;
+    z-index: 1;
+}
+
+.home-cate h3+p {
+    font: normal normal normal 16px/28px Jost;
+    letter-spacing: -.32px;
+    margin-bottom: 23px;
+}
+.cate-inner:before {
+    content: "";
+    width: calc(100% - 2px);
+    height: 50%;
+    border-color: rgba(200,200,200,0);
+    border-style: solid;
+    border-width: 0 1px;
+    transition: all .4s;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.cate-inner:after {
+    content: "";
+    width: 50%;
+    height: calc(100% - 2px);
+    border-color: rgba(200,200,200,0);
+    border-style: solid;
+    border-width: 1px 0;
+    transition: all .4s;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+.home-cate:hover .cate-inner:before {
+    height: 100%;
+    top: 0;
+    border-color: #fff;
+    transform: translateY(0);
+    transition: all .4s;
+}
+.home-cate:hover .cate-inner:after {
+    width: 100%;
+    border-color: #fff;
+    transition: all .4s;
+    left: 0;
+    transform: translateX(0%);
+}
+.home-cate:hover:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    opacity: .5;
+}
+.home-cate a {
+    position: relative;
+    font: normal normal 600 15px/22px Jost;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    z-index: 9;
+}
+.home-cate:hover .cate-inner {
+    opacity: 1;
+    transition: all .4s;
+}
+.home-product {
+    margin-top: 104px;
+    margin-bottom: 57px;
+    padding-bottom: 65px;
+}
+.home-product>p {
+    font: normal normal normal 15px/22px Jost;
+    letter-spacing: 1px;
+    color: #a8a8a8;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-right: 15px;
+    text-align: center;
+}
+.home-product h3 {
+    margin-top: 0;
+    line-height: 52px;
+    letter-spacing: -.8px;
+    color: #474747;
+    margin-bottom: 50px;
+    padding-right: 15px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+.home-product ol.product-items {
+    max-width: 1485px;
+    margin: 0 auto !important;
+    padding: 0 20px;
+}
+.home-about-wrapper {
+    position: relative;
+    margin-top: 110px;
+    z-index: 1;
+    padding-bottom: 60px;
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.home-about {
+    display: flex;
+}
+.home-about .content-left {
+    width: 44%;
+    padding-right: 112px;
+    position: relative;
+    top: -110px;
+    text-align: right;
+}
+.home-about .content-right {
+    width: 40%;
+    padding-top: 65px;
+}
+.cms-home p.heading {
+    text-align: left;
+    font: normal normal normal 15px/22px Jost;
+    letter-spacing: 1px;
+    color: #6c6c6c;
+    text-transform: uppercase;
+    position: relative;
+    display: inline;
+    padding-right: 10px;
+    margin-left: 3px;
+}
+p.heading:before {
+    content: "";
+    width: 80px;
+    height: 1px;
+    border-top: 1px solid #6c6c6c;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(100%,-50%);
+}
+.home-about .content-right h3 {
+    margin-top: 15px;
+    font: normal normal 300 40px/55px Manrope;
+    letter-spacing: -.8px;
+    text-transform: none;
+}
+.home-about-wrapper h6 {
+    font: normal normal 300 28px/38px Jost;
+    margin-top: 30px;
+    width: 75%;
+    letter-spacing: -.56px;
+    text-transform: none;
+    margin-bottom: 25px;
+}
+.home-about-wrapper p {
+    font: normal normal 300 16px/28px Jost;
+    letter-spacing: -.32px;
+    width: 65%;
+}
+.home-about-wrapper a.button {
+    margin-top: 25px;
+    padding: 0 35px;
+    color: #fff;
+}
+.home-about-wrapper a.button:hover {
+    color: #474747;
+}
+.home-about-wrapper .home-brand {
+    display: flex;
+    top: -50px;
+    position: relative;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1188px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-brand .content-left {
+    width: 50%;
+    padding-top: 10px;
+}
+.home-about-wrapper .home-brand .content-left p.heading {
+    line-height: normal;
+    width: auto;
+    display: initial;
+}
+p.heading~h3 {
+    margin-top: 15px;
+    font: normal normal 300 40px/55px Manrope;
+    letter-spacing: -.8px;
+    text-transform: none;
+}
+.home-brand h6 {
+    width: 96%;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-bottom: 27px;
+}
+.home-brand p {
+    width: 100%;
+    margin-left: 5px;
+}
+.home-wrapper-image.hidden {
+    display: none !important;
+}
+.home-brand .content-right {
+    width: 42%;
+    padding-left: 90px;
+}
+.home-brand .content-right p.heading:before{
+    content: none;
+}
+.home-newsletter {
+    background-image: url("https://www.curatiq.com/pub/media/shutterstock_1857358654.jpg");
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.home-newsletter .container {
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1188px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-newsletter .container:before {
+    content: " ";
+    display: table;
+}
+.home-newsletter .container:after {
+    content: " ";
+    display: table;
+}
+.home-newsletter .content-left {
+    margin-top: 57px;
+    margin-bottom: 25px;
+}
+.home-newsletter .block.newsletter {
+    position: relative;
+    width: 55%;
+    padding-bottom: 75px;
+    max-width: 630px;
+}
+.home-newsletter h2 {
+    margin-bottom: 0;
+    margin-left: 3px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 45px;
+    font-weight: 300;
+    line-height: 70px;
+    text-transform: capitalize;
+    letter-spacing: -.45px;
+    color: #474747;
+}
+.home-newsletter .content-left p {
+    margin-left: 4px;
+    font: normal normal 300 15px/24px Jost;
+}
+.home-newsletter .block.newsletter .form.subscribe {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.home-newsletter .block.newsletter input {
+    border-radius: 25px;
+    padding-left: 33px;
+    box-shadow: 11px 7px 23px rgb(0 0 0 / 16%);
+    font: normal normal 300 15px/22px Jost;
+    letter-spacing: 0;
+    color: #474747;
+    background-color: #fff !important;
+}
+.home-newsletter .block.newsletter .action.subscribe {
+    margin: 0;
+    overflow: hidden;
+    clip: auto;
+    height: 46px;
+    padding: 10px 69px;
+    background: #474747;
+    color: #fff;
+    transition: .3s;
+    border-radius: 30px;
+    right: 2px;
+    top: 2px;
+    border: none;
+    white-space: nowrap;
+    width: 46px;
+}
+.block.newsletter .field.newsletter {
+    max-width: unset;
+}
+.sr-only {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.home-newsletter .block.newsletter .action.subscribe:hover {
+    color: #474747;
+    background-color: #fff;
+}
+.newsletter-popup .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 99;
+    opacity: .55;
+}
+.newsletter-popup .popup-content {
+    position: fixed;
+    top: calc(50% - 1px);
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    background: #fff;
+    width: 60%;
+    max-height: calc(100vh - 20px);
+}
+
+.popup-content {
+    display: flex;
+}
+.popup-content .content-left {
+    width: 50%;
+    line-height: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.popup-content .content-right {
+    width: 50%;
+    position: relative;
+}
+.popup-content .close {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    right: 45px;
+    top: 40px;
+    transform: translate(50%,-50%);
+}
+.popup-content .close:before {
+    content: url('https://www.curatiq.com/pub/static/frontend/Vez/default/en_US/images/times-circle-solid.svg');
+    color: #777;
+    width: 27px;
+    height: 27px;
+}
+.popup-content .close:hover:before {
+    content: url('https://www.curatiq.com/pub/static/frontend/Vez/default/en_US/images/times-circle-solid-hover.svg');
+    cursor: pointer;
+}
+.popup-content .webforms {
+    margin-bottom: 80px;
+    margin-top: 70px;
+}
+.webforms-description-text {
+    margin-bottom: 4rem;
+}
+.popup-content h2 {
+    text-align: center;
+    font: normal normal 300 45px/55px Manrope;
+    letter-spacing: -1.35px;
+    color: #333;
+    width: 100%;
+    text-transform: none;
+    padding: 0 20px;
+    position: relative;
+    left: -25px;
+    margin: 0 auto 24px;
+}
+.popup-content p {
+    display: block;
+    text-align: center;
+    font: normal normal normal 15px/24px Jost;
+    letter-spacing: 0;
+    color: #505050;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+.popup-content .webforms .fieldset {
+    padding: 0;
+    margin-bottom: 22px;
+}
+
+.popup-content .webforms .field {
+    padding: 0;
+}
+.fieldset>.field, .fieldset>.fields>.field {
+    margin: 0 0 20px;
+}
+.webforms .field {
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.fieldset>.field:last-child, .fieldset>.fields>.field:last-child {
+    margin-bottom: 0;
+}
+.popup-content .webforms .fieldset input {
+    height: 60px;
+    letter-spacing: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.popup-content .webforms .fieldset input::placeholder {
+    text-align: center;
+    opacity: 1;
+    color: #83817b;
+    font-family: 'Jost', sans-serif;
+}
+.popup-content .form.webforms-newsletter-popup {
+    width: 78%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: block;
+}
+.popup-content button.action.submit.primary {
+    width: 100%;
+    padding: 10px 33px;
+    height: 60px;
+    border-radius: 30px;
+    text-align: center;
+}
+.popup-content button.action.submit.primary span {
+    font-weight: 500;
+}
+.popup-content .webforms .actions-toolbar {
+    padding: 0;
+}
+.popup-content .webforms .actions-toolbar .primary {
+    display: block;
+    float: unset;
+}

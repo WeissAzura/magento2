@@ -1,0 +1,108 @@
+<?php
+$text = "";
+$questions = $this->getQuestion();
+$text = '<div class="Q-and-A">';
+$text .= '<div class="Q/A-title">Questions and Answers</div>';
+
+$text .= '</div>';
+echo $text;
+?>
+<div class="button-container">
+    <div class="button-info">Did you find what you were looking for?</div>
+    <button type="button" class="form-toggle-button">Ask a Question</button>
+</div>
+<div class="ask-form-container">
+    <form id="ask-form">
+        <div>
+            <?php echo $this->getBlockHtml('formkey'); ?>
+            <input type="hidden" id="product_id" value="">
+            <label class="label" for="customer_name">Name:</label>
+            <input type="text" id="customer_name" placeholder="Type your name here...">
+            <label class="label" for="customer_email">Email:</label>
+            <input type="text" id="customer_email" placeholder="Type your email here...">
+            <br>
+            <label class="label" for="question-info">Your question:</label>
+            <div class="control">
+                <textarea id="question-info" placeholder="Type your question here..." cols="5" rows="3"></textarea>
+            </div>
+        </div>
+        <button type="button" class="action submit primary" id="send-form-button">Send the Question</button>
+    </form>
+</div>
+<?php
+$customer = $this->getCustomerInfo();
+$customer_name = "";
+$customer_email = "";
+if ($customer) {
+    $customer_name = $customer['name'];
+    $customer_email = $customer['email'];
+}
+?>
+<script type="text/javascript">
+    require(['jquery', 'mage/mage'],function($) {
+        $(document).ready(function(){
+            let dataForm = $('#ask-form');
+            dataForm.mage('validation', {});
+            let product_ID = $("#product_addtocart_form").children().filter('input[name="product"]').val();
+            <?php
+            foreach ($questions as $question) {?>
+            if (product_ID === '<?php echo $question->getData('product_id'); ?>') {
+                let report = `<div class="helpful question_<?php echo $question->getData('question_id'); ?>"><span>Was this helpful?</span><span class="Yes">Yes</span><span class="No">No</span></div>`;
+                $(".Q-and-A").append('<div class="qa-item">' + '<button class="accordion" type="button">'+'<?php echo $question->getData('question'); ?>' +'</button>' + '<div class="panel" style="display: none">' + `<?php echo $question->getData('answer'); ?>`+ report + '</div>' + '</div>');
+                let helpful = <?php echo $question->getData('helpful'); ?>;
+                if (helpful === 1) {
+                    $(".question_<?php echo $question->getData('question_id'); ?>").children().filter(".Yes").css({'color' : 'green', 'font-weight' : '600'});
+                } else {
+                    $(".question_<?php echo $question->getData('question_id'); ?>").children().filter(".No").css({'color' : 'red', 'font-weight' : '600'});
+                }
+            }
+            <?php } ?>
+            $(".accordion").attr('data-arrow', "\ue622");
+            $(".accordion").click(function (e){
+                e.stopPropagation();
+                $(this).blur();
+                if($(this).attr('data-arrow') === "\ue622") {
+                    $(this).attr('data-arrow', "\ue621");
+                }
+                else {
+                    $(this).attr('data-arrow', "\ue622");
+                }
+                $(this).next().slideToggle("fast");
+            });
+            $(".form-toggle-button").click(function (){
+                if ($(this).text() === 'Ask a Question') {
+                    $(this).text('Hide form');
+                }
+                else {
+                    $(this).text('Ask a Question');
+                }
+                $(".ask-form-container").toggle();
+            });
+            $("#customer_name").val("<?php echo $customer_name; ?>");
+            $("#customer_email").val("<?php echo $customer_email; ?>");
+            $("#send-form-button").click(function (){
+                const custom_url = "http://muffin.magento.mg/proque/ajax/add";
+                $.ajax({
+                    type: "POST",
+                    url: custom_url,
+                    data: {
+                        customer_name: $("#customer_name").val(),
+                        customer_email: $("#customer_email").val(),
+                        product_id: $("#product_addtocart_form").children().filter('input[name="product"]').val(),
+                        question: $("#question-info").val(),
+                    },
+                    dataType: 'json',
+                    success: function(data) {},
+                    error: function (xhr, status, errorThrown) {
+                        console.log('Error happens. Try again.');
+                        console.log(errorThrown);
+                    }
+                });
+                $(".ask-form-container").hide();
+                window.scrollTo(0,0);
+            });
+        });
+    });
+</script>
+
+

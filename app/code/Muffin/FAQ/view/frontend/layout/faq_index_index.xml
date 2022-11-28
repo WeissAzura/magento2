@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Muffin_FAQ::css/FAQ_Page.css"/>
+        <script src="Muffin_FAQ::js/common.js"/>
+    </head>
+    <body>
+        <container name="rev-banner-wrapper" htmlTag="div" htmlClass="rev-banner-wrapper">
+            <container name="banner-content" htmlClass="banner-content" htmlTag="div"/>
+            <block class="Magento\Framework\View\Element\Template" name="blog-banner" after="-" template="blog-banner.phtml"/>
+        </container>
+        <move element="rev-banner-wrapper" destination="page.wrapper" before="main.content"/>
+        <move element="breadcrumbs" destination="banner-content"/>
+        <move element="page.main.title" destination="banner-content" before="-"/>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string" translate="true">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Home</item>
+                    <item name="label" xsi:type="string" translate="true">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string" translate="true">FAQs</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">FAQs</item>
+                    <item name="label" xsi:type="string" translate="true">FAQs</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block name="muffin_faq_index" class="Muffin\FAQ\Block\Index" template="Muffin_FAQ::faq.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

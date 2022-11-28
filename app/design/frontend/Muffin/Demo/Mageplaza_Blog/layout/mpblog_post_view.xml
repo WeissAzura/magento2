@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <container name="rev-banner-wrapper" htmlTag="div" htmlClass="rev-banner-wrapper">
+            <container name="banner-content" htmlClass="banner-content" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="blog-name-block" template="name-blog-view.phtml"/>
+            </container>
+            <block class="Magento\Framework\View\Element\Template" name="blog-banner" after="-" template="blog-banner.phtml"/>
+        </container>
+        <move element="rev-banner-wrapper" destination="page.wrapper" before="main.content"/>
+        <move element="breadcrumbs" destination="banner-content" after="-"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+    </body>
+</page>

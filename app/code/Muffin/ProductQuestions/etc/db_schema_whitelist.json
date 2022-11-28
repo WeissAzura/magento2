@@ -1,0 +1,22 @@
+{
+    "muffin_pq_question": {
+        "column": {
+            "question_id": true,
+            "question": true,
+            "status": true,
+            "answer": true,
+            "helpful": true,
+            "product_id": true,
+            "created_at": true,
+            "updated_at": true,
+            "customer_name": true,
+            "customer_email": true
+        },
+        "index": {
+            "MUFFIN_PQ_QUESTION_QUESTION_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

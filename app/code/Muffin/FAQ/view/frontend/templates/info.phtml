@@ -1,0 +1,79 @@
+<h1 class="page-title"></h1>
+<div class="title-wrapper"></div>
+<?php
+$category = $this->getCategoryCollection();
+echo '<div class="category-bar">';
+echo '<div class="item title">Categories:</div>';
+foreach ($category as $item) {
+    echo '<div class="item "><a href="' . $item->getData('url_key') . '">' . $item->getData('category') . '</a></div>';
+}
+echo '</div>';
+$cat = "";
+$cat_id = 0;
+if ($this->getPageType()['type'] == 'category') {
+    $text = '<div class="category-title">';
+    $this->setData('category_id', $this->getPageType()['id']);
+    $questions = $this->getAnsweredQuestion();
+    foreach ($questions as $question) {
+        $text .= '<button class="accordion" type="button" data-arrow="⌄">' . $question->getData('question') . '</button>';
+        $text .= '<div class="panel">';
+        $text .= $question->getData('answer');
+        $text .= '<a href="' . $question->getData('url_key') . '">Read more</a>';
+        $text .= '</div>';
+    }
+    $text .= '</div>';
+    echo $text;
+    $cat = $this->getPageType()['name'];
+    $cat_id = $this->getPageType()['id'];
+}
+if ($this->getPageType()['type'] == 'question') {
+    echo '<div class="answer">' . $this->getQuestion()->load($this->getPageType()['id'])->getData('answer') . '</div>';
+    $cat_id = $this->getQuestion()->load($this->getPageType()['id'])->getData('category_id');
+    $cat = $this->getCategory()->load($cat_id)->getData('category');
+}
+echo '<div class="button-container">';
+echo '<div class="button-info">Did you find what you were looking for?</div>';
+echo '<button type="button" class="form-toggle-button">Ask a Question</button>';
+echo '</div>';
+?>
+<div class="ask-form-container">
+    <form id="ask-form">
+        <div class="field required">
+            <label class="label" for="question-info">Your question:</label>
+            <div class="control">
+                <textarea id="question-info" placeholder="Type your question here..." cols="5" rows="3"></textarea>
+            </div>
+        </div>
+        <button type="button" class="action submit primary" id="send-form-button">Send the Question</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    require(['jquery'],function($) {
+        $(document).ready(function(){
+           let category = $(".item.title").nextAll();
+           for (let i=0; i<category.length; i++) {
+               if (category.eq(i).text() === "<?php echo $cat; ?>") {
+                   category.eq(i).children().css("color", "#000");
+               }
+           }
+            $("#send-form-button").click(function (){
+                const custom_url = "http://muffin.magento.mg/faq/index/add";
+                $.ajax({
+                    type: "POST",
+                    url: custom_url,
+                    data: {
+                        question: $("#question-info").val(),
+                        category_id: "<?php echo $cat_id; ?>",
+                    },
+                    dataType: 'json',
+                    success: function(data) {},
+                    error: function (xhr, status, errorThrown) {
+                        console.log('Error happens. Try again.');
+                        console.log(errorThrown);
+                    }
+                });
+            });
+        });
+    });
+</script>

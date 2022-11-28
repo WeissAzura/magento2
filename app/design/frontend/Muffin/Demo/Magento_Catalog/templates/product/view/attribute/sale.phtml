@@ -1,0 +1,5 @@
+<?php
+$product = $this->getProduct();
+if ($product->getSpecialPrice()) : ?>
+    <div class="product-info-tags"><div class="product-item-label"><div class="label"><span class="product-label sale-label">Sale</span></div></div></div>
+<?php endif; ?>

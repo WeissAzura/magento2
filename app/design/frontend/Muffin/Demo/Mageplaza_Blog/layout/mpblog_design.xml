@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Blog
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="mpblog.sidebar.category" destination="blog.sidebar.main" before="mpblog.sidebar.mostview"/>
+        <referenceBlock name="mpblog.sidebar.category">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Mageplaza_Blog::category/widget.phtml</argument>
+            </action>
+        </referenceBlock>
+        <block class="Magento\Framework\View\Element\Template" template="skin-help-block.phtml" name="skin-help-block"/>
+        <move element="skin-help-block" destination="page.wrapper" after="main.content"/>
+    </body>
+</page>
