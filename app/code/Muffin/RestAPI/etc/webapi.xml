@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/rest_api/getProduct/:id" method="GET">
+        <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="getItem" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route method="GET" url="/V1/rest_api/getProductByFilter">
+        <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="getList" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route method="GET" url="/V1/rest_api/getProductListBySearchCriteria">
+        <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="getListBySearchCriteria" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route method="GET" url="/V1/rest_api/getProductByCategoryId/:id">
+        <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="getItemByCategory" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/rest_api/setDescription" method="PUT">
+        <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="setDescription" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+</routes>

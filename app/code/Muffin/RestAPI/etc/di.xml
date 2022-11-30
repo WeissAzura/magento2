@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Muffin\RestAPI\API\ProductRepositoryInterface" type="Muffin\RestAPI\Model\API\ProductRepository"/>
+    <preference for="Muffin\RestAPI\API\RequestItemInterface" type="Muffin\RestAPI\Model\API\RequestItem"/>
+    <preference for="Muffin\RestAPI\API\ResponseItemInterface" type="Muffin\RestAPI\Model\API\ResponseItem"/>
+</config>
