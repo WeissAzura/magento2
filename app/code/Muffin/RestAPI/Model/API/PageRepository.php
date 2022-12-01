@@ -24,10 +24,8 @@ class PageRepository implements PageRepositoryITF
     {
         $collection = $this->pageFactory->create();
         $jsonArr = [];
-        $count = 0;
         foreach ($collection as $page) {
-            $jsonArr[$count] = $page->getData();
-            $count++;
+            $jsonArr[] = $page->getData();
         }
         return $jsonArr;
     }
