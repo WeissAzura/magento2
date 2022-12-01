@@ -13,6 +13,12 @@
             <resource ref="anonymous" />
         </resources>
     </route>
+    <route method="GET" url="/V1/rest_api/getPageList">
+        <service class="Muffin\RestAPI\API\PageRepositoryITF" method="getPageList" />
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
     <route method="GET" url="/V1/rest_api/getProductListBySearchCriteria">
         <service class="Muffin\RestAPI\API\ProductRepositoryInterface" method="getListBySearchCriteria" />
         <resources>

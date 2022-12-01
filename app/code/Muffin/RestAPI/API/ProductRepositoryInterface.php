@@ -3,6 +3,8 @@ namespace Muffin\RestAPI\API;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Api\SearchResultsInterface;
+use Magento\Cms\Api\Data\PageInterface;
+
 interface ProductRepositoryInterface
 {
     /**

@@ -6,6 +6,7 @@ use Magento\Catalog\Model\Product\Attribute\Repository;
 use Magento\Catalog\Model\ResourceModel\Product\Action;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SortOrder;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -144,7 +145,7 @@ class ProductRepository implements ProductRepositoryInterface
         }
         return $this->getResponseItemFromProductCollection($collection);
     }
-    public function getListBySearchCriteria(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
+    public function getListBySearchCriteria(SearchCriteriaInterface $searchCriteria): SearchResultsInterface
     {
         $collection = $this->productCollectionFactory->create();
         $this->searchResults->setSearchCriteria($searchCriteria);
@@ -168,6 +169,10 @@ class ProductRepository implements ProductRepositoryInterface
         $collection->setPageSize($searchCriteria->getPageSize());
         $this->searchResults->setItems($collection->toArray());
         return $this->searchResults;
+    }
+    public function getPageList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
+    {
+
     }
 
     public function getResponseItemFromProductCollection($collection)
