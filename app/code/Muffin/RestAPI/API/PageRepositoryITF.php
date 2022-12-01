@@ -6,7 +6,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 interface PageRepositoryITF
 {
     /**
-     * Return a filtered page list.
+     * Return a page list.
      * @return array[]
      * @throws NoSuchEntityException
      */

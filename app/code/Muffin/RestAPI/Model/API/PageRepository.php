@@ -3,16 +3,16 @@ namespace Muffin\RestAPI\Model\API;
 
 use Magento\Framework\Exception\LocalizedException;
 use Muffin\RestAPI\API\PageRepositoryITF;
-use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
+use Muffin\RestAPI\Model\PageCollectionFactory;
 
 /**
  * Class ProductRepository
  */
 class PageRepository implements PageRepositoryITF
 {
-    protected CollectionFactory $pageFactory;
+    protected PageCollectionFactory $pageFactory;
     public function __construct(
-        CollectionFactory $pageFactory,
+        PageCollectionFactory $pageFactory,
     ) {
         $this->pageFactory = $pageFactory;
     }
